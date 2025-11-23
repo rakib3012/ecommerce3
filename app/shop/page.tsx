@@ -1,17 +1,11 @@
-"use client"
-import Product from '../Component/Product'
- 
+import Product from "../../Component/Product";
 
- 
-
-const shopPage = ( ) => {
-  
-
+const shopPage = () => {
   return (
-    <div>
-    <Product/>
+    <div className="px-10">
+      <Product />
     </div>
-  )
-}
+  );
+};
 
-export default shopPage
+export default shopPage;

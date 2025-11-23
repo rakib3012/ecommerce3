@@ -1,42 +1,114 @@
  {
   "products": [
-    {
-      "id": 1,
-      "name": "Wireless Headphones",
-      "price": 120,
-      "brand": "Sony",
-      "color": "Black",
-      "image": "/images/headphone.jpg",
-      "categoryId": 1
-    },
-    {
-      "id": 2,
-      "name": "Smart Watch",
-      "price": 80,
-      "brand": "Apple",
-      "color": "Silver",
-      "image": "/images/watch.jpg",
-      "categoryId": 1
-    },
-    {
-      "id": 3,
-      "name": "Gaming Laptop",
-      "price": 950,
-      "brand": "Asus",
-      "color": "Gray",
-      "image": "/images/laptop.jpg",
-      "categoryId": 2
-    },
-    {
-      "id": 4,
-      "name": "Bluetooth Speaker",
-      "price": 60,
-      "brand": "JBL",
-      "color": "Red",
-      "image": "/images/speaker.jpg",
-      "categoryId": 3
-    }
-  ],
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "price": 120,
+    "brand": "Sony",
+    "color": "Black",
+    "image": "/images/headphone.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "price": 80,
+    "brand": "Apple",
+    "color": "Silver",
+    "image": "/images/watch.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 3,
+    "name": "Gaming Laptop",
+    "price": 950,
+    "brand": "Asus",
+    "color": "Gray",
+    "image": "/images/laptop.jpg",
+    "categoryId": 2
+  },
+  {
+    "id": 4,
+    "name": "Bluetooth Speaker",
+    "price": 60,
+    "brand": "JBL",
+    "color": "Red",
+    "image": "/images/speaker.jpg",
+    "categoryId": 3
+  },
+  {
+    "id": 5,
+    "name": "Wireless Mouse",
+    "price": 25,
+    "brand": "Logitech",
+    "color": "Black",
+    "image": "/images/mouse.jpg",
+    "categoryId": 2
+  },
+  {
+    "id": 6,
+    "name": "Mechanical Keyboard",
+    "price": 70,
+    "brand": "Razer",
+    "color": "Black",
+    "image": "/images/keyboard.jpg",
+    "categoryId": 2
+  },
+  {
+    "id": 7,
+    "name": "HD Webcam",
+    "price": 50,
+    "brand": "Logitech",
+    "color": "Black",
+    "image": "/images/webcam.jpg",
+    "categoryId": 2
+  },
+  {
+    "id": 8,
+    "name": "Portable Charger",
+    "price": 40,
+    "brand": "Anker",
+    "color": "White",
+    "image": "/images/charger.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 9,
+    "name": "Smartphone",
+    "price": 600,
+    "brand": "Samsung",
+    "color": "Blue",
+    "image": "/images/smartphone.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 10,
+    "name": "Noise Cancelling Earbuds",
+    "price": 150,
+    "brand": "Bose",
+    "color": "Black",
+    "image": "/images/earbuds.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 11,
+    "name": "LED Monitor",
+    "price": 250,
+    "brand": "Bose",
+    "color": "Black",
+    "image": "/images/earbuds.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 12,
+    "name": "Mechanical Keyboard",
+    "price": 550,
+    "brand": "Bose",
+    "color": "Black",
+    "image": "/images/earbuds.jpg",
+    "categoryId": 1
+  }
+],
 
   "categories": [
     { "id": 1, "name": "Electronics" },

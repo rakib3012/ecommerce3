@@ -19,7 +19,7 @@ const defaultResponse: Product[] = [];
 
 const fetchData = async (): Promise<Product[]> => {
   try {
-    const response = await fetch(`http://localhost:5000z/products`);
+    const response = await fetch(`http://localhost:5000/products`);
     if (!response.ok) {
       throw new Error("data fetching faield ");
     }

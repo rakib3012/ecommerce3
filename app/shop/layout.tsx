@@ -9,7 +9,7 @@ export default function Layout({
     <div className="flex min-h-screen">
       
       {/* Sidebar */}
-      <div className="w-1/4 bg-gray-100 shadow-lg p-2 ">
+      <div className="w-[18%] bg-gray-100 shadow-lg p-2 ">
         <h2 className="text-lg font-semibold mb-4">Filters</h2>
 
         <ul className="space-y-2">
@@ -25,7 +25,7 @@ export default function Layout({
       </div>
 
       {/* Main Content */}
-      <div className="w-3/4 bg-gray-50">
+      <div className="w-[82%] bg-gray-50">
         {children}
       </div>
 

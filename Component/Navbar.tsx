@@ -59,7 +59,7 @@ const Navbar = ( ) => {
       {/* 📱 Mobile Dropdown Menu */}
       {menuOpen && (
         <ul className="md:hidden bg-emerald-700 text-center space-y-3 py-4 animate-fadeIn">
-          {["home", "shop", "cart"].map((item) => (
+          {["Home", "Shop",  "Add Product", "Cart"].map((item) => (
             <li key={item}>
               <Link
               href={`/${item}`}
