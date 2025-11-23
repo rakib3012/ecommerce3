@@ -1,0 +1,71 @@
+ {
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Headphones",
+      "price": 120,
+      "brand": "Sony",
+      "color": "Black",
+      "image": "/images/headphone.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Smart Watch",
+      "price": 80,
+      "brand": "Apple",
+      "color": "Silver",
+      "image": "/images/watch.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "Gaming Laptop",
+      "price": 950,
+      "brand": "Asus",
+      "color": "Gray",
+      "image": "/images/laptop.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 4,
+      "name": "Bluetooth Speaker",
+      "price": 60,
+      "brand": "JBL",
+      "color": "Red",
+      "image": "/images/speaker.jpg",
+      "categoryId": 3
+    }
+  ],
+
+  "categories": [
+    { "id": 1, "name": "Electronics" },
+    { "id": 2, "name": "Computers" },
+    { "id": 3, "name": "Accessories" }
+  ],
+
+  "filters": {
+    "brands": ["Sony", "Apple", "Asus", "JBL"],
+    "colors": ["Black", "Silver", "Gray", "Red"],
+    "priceRange": [
+      { "label": "Under $50", "min": 0, "max": 50 },
+      { "label": "$50 - $200", "min": 50, "max": 200 },
+      { "label": "$200 - $1000", "min": 200, "max": 1000 }
+    ]
+  },
+
+  "users": [
+    {
+      "id": 1,
+      "name": "Rakib Uzzaman",
+      "email": "rakib@example.com",
+      "role": "customer"
+    },
+    {
+      "id": 2,
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "role": "admin"
+    }
+  ]
+}
