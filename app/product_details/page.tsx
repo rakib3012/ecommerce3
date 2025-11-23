@@ -1,4 +1,4 @@
-import Product_Details from '@/Component/Product_Details'
+import Product_Details from '@/Component/ProductDetails'
 import React from 'react'
 
 
