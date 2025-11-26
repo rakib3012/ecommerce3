@@ -2,8 +2,11 @@
 import { Product } from "@/app/hook/fetchingProductData";
 import Image from "next/image";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/reducer/cartReducer";
 
-const ProductCard = ({ product }:{product:Product}) => {
+const ProductCard = ({ product }: { product: Product }) => {
+  const dispatch = useDispatch();
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-200 overflow-hidden">
       {/* IMAGE */}
@@ -35,7 +38,11 @@ const ProductCard = ({ product }:{product:Product}) => {
             View
           </button>
         </Link>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 transition">
+        <button
+          onClick={() => dispatch(addToCart(product))}
+          className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 transition"
+          
+        >
           Add to Cart
         </button>
       </div>

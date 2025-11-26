@@ -4,6 +4,7 @@ import React from 'react'
  {}
 
 const CartComponent = ( ) => {
+  
   return (
      <div className="min-h-screen bg-gray-50 px-4 sm:px-8 py-10">
       {/* Header */}

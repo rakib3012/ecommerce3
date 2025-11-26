@@ -1,5 +1,6 @@
 "use client";
 
+ 
 import { useFetchingProductData } from "../app/hook/fetchingProductData";
 
 import ProductCard from "./ProductCard";
@@ -7,7 +8,7 @@ import ProductCard from "./ProductCard";
 const Product = () => {
   const { data, isLoading } = useFetchingProductData();
 
-    
+
 
   return (
    <div className="">

@@ -1,3 +1,5 @@
+ 
+
 import CartComponent from '@/Component/CartComponent'
 import React from 'react'
 
@@ -6,7 +8,7 @@ import React from 'react'
 const cartPage = ( ) => {
   return (
     <div>
-      <CartComponent/>
+      <CartComponent />
      </div>
   )
 }
