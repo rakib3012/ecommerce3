@@ -15,8 +15,8 @@ const ProductCard = ({ product }: { product: Product }) => {
           <Image
             src={product.image} // 👉 dynamic image support
             alt={product.name}
-            fill
-            className="object-contain"
+            width={200}
+            height={200}
           />
         ) : (
           <span className="text-gray-400">No Image</span>

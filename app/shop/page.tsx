@@ -1,3 +1,5 @@
+"use client";
+
 import Product from "../../Component/Product";
 
 const shopPage = () => {

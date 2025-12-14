@@ -38,15 +38,17 @@ const initialState: CartItem[] = [];
 
 export const addToCart = createAction<Product>("cart/addToCart");
 export const removeProduct = createAction<string>("cart/removeProduct");
-export const modifyQuantityAnItem = createAction<{ id: string; quantity: number }>("cart/modifyQuantityAnItem");
+export const modifyQuantityAnItem = createAction<{
+  id: string;
+  quantity: number;
+}>("cart/modifyQuantityAnItem");
 export const clearCart = createAction("cart/clearCart");
- 
 
 export const cartReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(addToCart, (state, action: PayloadAction<Product>) => {
-      const product = state.find(item => item.id === action.payload.id);
-        alert("added the product")
+      const product = state.find((item) => item.id === action.payload.id);
+      alert("added the product");
       if (product) {
         product.quantity += 1;
       } else {
@@ -55,17 +57,20 @@ export const cartReducer = createReducer(initialState, (builder) => {
     })
 
     .addCase(removeProduct, (state, action: PayloadAction<string>) => {
-      return state.filter(item => item.id !== action.payload);
+      return state.filter((item) => item.id !== action.payload);
     })
 
-    .addCase(modifyQuantityAnItem, (state, action: PayloadAction<{ id: string; quantity: number }>) => {
-      const index = state.findIndex(item => item.id === action.payload.id);
-      if (index !== -1) {
-        state[index].quantity = action.payload.quantity;
+    .addCase(
+      modifyQuantityAnItem,
+      (state, action: PayloadAction<{ id: string; quantity: number }>) => {
+        const index = state.findIndex((item) => item.id === action.payload.id);
+        if (index !== -1) {
+          state[index].quantity = action.payload.quantity;
+        }
       }
-    })
+    )
 
-    .addCase("cart/clearCart", () => {
+    .addCase(clearCart, () => {
       return [];
     });
 });

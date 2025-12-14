@@ -1,16 +1,14 @@
- 
+"use client";
 
-import CartComponent from '@/Component/CartComponent'
-import React from 'react'
+import CartComponent from "@/Component/CartComponent";
+import React from "react";
 
- 
-
-const cartPage = ( ) => {
+const cartPage = () => {
   return (
     <div>
       <CartComponent />
-     </div>
-  )
-}
+    </div>
+  );
+};
 
-export default cartPage 
+export default cartPage;
