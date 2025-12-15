@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react'
+import { Menu, ShoppingCart, X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
- 
-
-const Navbar = ( ) => {
-   const [menuOpen, setMenuOpen] = useState(false);
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="bg-cyan-700  text-white shadow-lg sticky top-0 z-50">
@@ -20,15 +19,10 @@ const Navbar = ( ) => {
         </Link>
 
         {/* 🧭 Desktop Menu */}
-        <ul className="hidden md:flex gap-8 text-lg font-medium">
-          {["home", "shop", "cart"].map((item) => (
+        <ul className="hidden md:flex gap-16 text-lg font-medium">
+          {["home", "shop", "contact",].map((item) => (
             <li key={item}>
-              <Link
-                href={`/${item}`}
-                
-              >
-                {item}
-              </Link>
+              <Link href={`/${item}`}>{item.charAt(0).toUpperCase()+item.slice(1)}</Link>
             </li>
           ))}
         </ul>
@@ -36,22 +30,30 @@ const Navbar = ( ) => {
         {/* 🛒 Cart Icon */}
         <div className="flex items-center gap-4">
           <Link
-           href="/cart"
+            href="/cart"
             className="relative hover:text-yellow-300 transition duration-300"
           >
-            
-            <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
-              2
+            <span className="relative">
+             <ShoppingCart /><sup className="absolute -top-2 -right-1 bg-yellow-400 text-gray-800 text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">3</sup>
             </span>
           </Link>
-           
+          <p>
+            <Link
+              href="/login"
+              className="relative hover:text-yellow-300 transition duration-300"
+            >
+              <span className="">
+                Login
+              </span>
+            </Link>
+          </p>
 
           {/* 📱 Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden focus:outline-none"
           >
-            {/* {menuOpen ? <X size={28} /> : <Menu size={28} />} */}
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
@@ -59,14 +61,9 @@ const Navbar = ( ) => {
       {/* 📱 Mobile Dropdown Menu */}
       {menuOpen && (
         <ul className="md:hidden bg-emerald-700 text-center space-y-3 py-4 animate-fadeIn">
-          {["Home", "Shop",  "Add Product", "Cart"].map((item) => (
+          {["home", "shop", "contact",].map((item) => (
             <li key={item}>
-              <Link
-              href={`/${item}`}
-                onClick={() => setMenuOpen(false)}
-                
-                
-              >
+              <Link href={`/${item}`} onClick={() => setMenuOpen(false)}>
                 {item}
               </Link>
             </li>
@@ -75,6 +72,6 @@ const Navbar = ( ) => {
       )}
     </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

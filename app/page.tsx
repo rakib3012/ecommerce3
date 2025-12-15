@@ -1,14 +1,18 @@
  
  
-import HomeComponent from "../Component/Home";
+import HomeComponent from "@/Component/Home";
+
+
  
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      
-      <HomeComponent />
-     
+   <>
+    <div className="flex items-center justify-center  h-[calc(100vh-56px)] font-sans overflow-hidden">
+
+      <HomeComponent/>
+
     </div>
+    </>
   );
 }

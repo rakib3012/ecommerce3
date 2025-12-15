@@ -1,3 +1,5 @@
+import Footer from '@/Component/Footer';
+import Navbar from '@/Component/Navbar';
 import React from 'react';
 
 export default function Layout({
@@ -6,7 +8,11 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen">
+   <div className="min-h-screen flex flex-col">
+   <header>
+          <Navbar />
+        </header>
+    <main className="flex">
       
       {/* Sidebar */}
       <div className="w-[18%] bg-gray-100 shadow-lg p-2 px-4">
@@ -29,6 +35,10 @@ export default function Layout({
         {children}
       </div>
 
-    </div>
+    </main>
+    <footer className="">
+        <Footer/>
+      </footer>
+   </div>
   );
 }

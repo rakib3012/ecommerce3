@@ -7,15 +7,15 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <>
-      <div>
+    <div className="min-h-screen flex flex-col">
+      <header>
         <Navbar />
-      </div>
-      <div>{children}</div>
-      <div className="">
+      </header>
+      <main className="flex-1">{children}</main>
+      <footer className="">
         <Footer />
-      </div>
-    </>
+      </footer>
+    </div>
   );
 };
 
