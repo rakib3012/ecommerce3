@@ -9,9 +9,14 @@ import { clearCart, removeProduct } from "@/store/reducer/cartReducer";
 import Image from "next/image";
 
 
+
 const CartComponent = () => {
+
+
+  
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
+
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 sm:px-8 py-10">

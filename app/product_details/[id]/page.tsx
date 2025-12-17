@@ -1,18 +1,15 @@
 import ProductDetails from "@/Component/ProductDetails";
 import React from "react";
 
-
- 
- type params={
+type PageProps = {
+  params: {
     id: string;
   };
- 
-const ProductDetailsPage = ({ params }:{params: params}) => {
-
-
+};
+const ProductDetailsPage = ({ params }: PageProps) => {
   return (
     <div className="min-h-screen p-8">
-      <ProductDetails params={params} />
+      <ProductDetails id={params.id} />
     </div>
   );
 };
