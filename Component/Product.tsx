@@ -8,7 +8,7 @@ import ProductCard from "./ProductCard";
 const Product = () => {
   const { data, isLoading } = useFetchingProductData();
 
-
+const products = data?.products || [];
 
   return (
    <div className="">
@@ -18,13 +18,13 @@ const Product = () => {
         </div>
       ) : (
         <div className="pb-16">
-          {data?.length === 0 ? (
+          {products?.length === 0 ? (
             <div className="text-center text-gray-500 text-lg">
               No products available at the moment.
             </div>
           ) : (
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
-              {data?.map((product) => (
+              {products?.map((product) => (
                 <li key={product.id} className="w-full sm:w-64">
                   <ProductCard  product={product} />
                 </li>

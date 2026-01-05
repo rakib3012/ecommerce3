@@ -1,113 +1,152 @@
  {
   "products": [
   {
-    "id": 1,
-    "name": "Wireless Headphones",
-    "price": 120,
-    "brand": "Sony",
-    "color": "Black",
-    "image": "",
-    "categoryId": 1
-  },
-  {
-    "id": 2,
-    "name": "Smart Watch",
-    "price": 80,
-    "brand": "Apple",
-    "color": "Silver",
-    "image": "/images/watch.jpg",
-    "categoryId": 1
-  },
-  {
-    "id": 3,
-    "name": "Gaming Laptop",
-    "price": 950,
-    "brand": "Asus",
-    "color": "Gray",
-    "image": "/images/laptop.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 4,
-    "name": "Bluetooth Speaker",
-    "price": 60,
-    "brand": "JBL",
-    "color": "Red",
-    "image": "/images/speaker.jpg",
-    "categoryId": 3
-  },
-  {
-    "id": 5,
-    "name": "Wireless Mouse",
-    "price": 25,
-    "brand": "Logitech",
-    "color": "Black",
-    "image": "/images/mouse.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 6,
-    "name": "Mechanical Keyboard",
-    "price": 70,
-    "brand": "Razer",
-    "color": "Black",
-    "image": "/images/keyboard.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 7,
-    "name": "HD Webcam",
-    "price": 50,
-    "brand": "Logitech",
-    "color": "Black",
-    "image": "/images/webcam.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 8,
-    "name": "Portable Charger",
-    "price": 40,
-    "brand": "Anker",
-    "color": "White",
-    "image": "/images/charger.jpg",
-    "categoryId": 1
-  },
-  {
-    "id": 9,
-    "name": "Smartphone",
-    "price": 600,
-    "brand": "Samsung",
-    "color": "Blue",
-    "image": "/images/smartphone.jpg",
-    "categoryId": 1
-  },
-  {
-    "id": 10,
-    "name": "Noise Cancelling Earbuds",
-    "price": 150,
-    "brand": "Bose",
-    "color": "Black",
-    "image": "/images/earbuds.jpg",
-    "categoryId": 1
-  },
-  {
-    "id": 11,
-    "name": "LED Monitor",
-    "price": 250,
-    "brand": "Bose",
-    "color": "Black",
-    "image": "/images/earbuds.jpg",
-    "categoryId": 1
-  },
-  {
-    "id": 12,
-    "name": "Mechanical Keyboard",
-    "price": 550,
-    "brand": "Bose",
-    "color": "Black",
-    "image": "/images/earbuds.jpg",
-    "categoryId": 1
-  }
+"id": 1,
+"title": "Essence Mascara Lash Princess",
+"description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+"category": "beauty",
+"price": 9.99,
+"discountPercentage": 10.48,
+"rating": 2.56,
+"stock": 99,
+"tags": [
+"beauty",
+"mascara"
+],
+"brand": "Essence",
+"sku": "BEA-ESS-ESS-001",
+"weight": 4,
+"warrantyInformation": "1 week warranty",
+"shippingInformation": "Ships in 3-5 business days",
+"availabilityStatus": "In Stock",
+"reviews": [
+{
+"rating": 3,
+"comment": "Would not recommend!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Eleanor Collins",
+"reviewerEmail": "eleanor.collins@x.dummyjson.com"
+},
+{
+"rating": 4,
+"comment": "Very satisfied!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Lucas Gordon",
+"reviewerEmail": "lucas.gordon@x.dummyjson.com"
+},
+{
+"rating": 5,
+"comment": "Highly impressed!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Eleanor Collins",
+"reviewerEmail": "eleanor.collins@x.dummyjson.com"
+}
+],
+"returnPolicy": "No return policy",
+"minimumOrderQuantity": 48,
+"images": 
+"https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+,
+"thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
+},
+{
+"id": 2,
+"title": "Essence Mascara Lash Princess",
+"description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+"category": "beauty",
+"price": 9.99,
+"discountPercentage": 10.48,
+"rating": 2.56,
+"stock": 99,
+"tags": [
+"beauty",
+"mascara"
+],
+"brand": "Essence",
+"sku": "BEA-ESS-ESS-001",
+"weight": 4,
+"warrantyInformation": "1 week warranty",
+"shippingInformation": "Ships in 3-5 business days",
+"availabilityStatus": "In Stock",
+"reviews": [
+{
+"rating": 3,
+"comment": "Would not recommend!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Eleanor Collins",
+"reviewerEmail": "eleanor.collins@x.dummyjson.com"
+},
+{
+"rating": 4,
+"comment": "Very satisfied!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Lucas Gordon",
+"reviewerEmail": "lucas.gordon@x.dummyjson.com"
+},
+{
+"rating": 5,
+"comment": "Highly impressed!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Eleanor Collins",
+"reviewerEmail": "eleanor.collins@x.dummyjson.com"
+}
+],
+"returnPolicy": "No return policy",
+"minimumOrderQuantity": 48,
+"images": 
+"https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+,
+"thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
+},
+{
+"id": 3,
+"title": "Essence Mascara Lash Princess",
+"description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+"category": "beauty",
+"price": 9.99,
+"discountPercentage": 10.48,
+"rating": 2.56,
+"stock": 99,
+"tags": [
+"beauty",
+"mascara"
+],
+"brand": "Essence",
+"sku": "BEA-ESS-ESS-001",
+"weight": 4,
+"warrantyInformation": "1 week warranty",
+"shippingInformation": "Ships in 3-5 business days",
+"availabilityStatus": "In Stock",
+"reviews": [
+{
+"rating": 3,
+"comment": "Would not recommend!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Eleanor Collins",
+"reviewerEmail": "eleanor.collins@x.dummyjson.com"
+},
+{
+"rating": 4,
+"comment": "Very satisfied!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Lucas Gordon",
+"reviewerEmail": "lucas.gordon@x.dummyjson.com"
+},
+{
+"rating": 5,
+"comment": "Highly impressed!",
+"date": "2025-04-30T09:41:02.053Z",
+"reviewerName": "Eleanor Collins",
+"reviewerEmail": "eleanor.collins@x.dummyjson.com"
+}
+],
+"returnPolicy": "No return policy",
+"minimumOrderQuantity": 48,
+"images": 
+"https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+,
+"thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
+}
 ],
 
   "categories": [

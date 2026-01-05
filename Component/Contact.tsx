@@ -3,7 +3,7 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" flex flex-col items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       {/* Title */}
       <h1 className="text-3xl font-bold text-gray-900 mb-8">Contact Us</h1>
 
@@ -74,14 +74,14 @@ const Contact = () => {
         </form>
 
         {/* Optional: Map */}
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <h2 className="text-lg font-semibold text-gray-700 mb-2">Our Location</h2>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.908854827407!2d90.40060441542666!3d23.81033148459014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7c5d3f2b4bf%3A0x6c5d8c2f72f5bbd9!2sDhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
             className="w-full h-64 rounded-md"
             loading="lazy"
           ></iframe>
-        </div>
+        </div> */}
       </div>
     </div>
   )

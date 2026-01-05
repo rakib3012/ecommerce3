@@ -43,15 +43,15 @@ const CartComponent = () => {
             cart.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-6 gap-4 px-8 py-4 items-center"
+                className="grid grid-cols-6 gap-4 px-8 py-4 text-center items-center"
               >
-                <p>
-                  <Image src = {item.image} alt={item.name} width={50} height={50} className="object-contain"/>
+                <p className="flex justify-center">
+                  <Image src = {item.images[0]} alt={item.title} width={100} height={100} className="object-contain text-center"/>
                 </p>
-                <p className="text-center">{item.name}</p>
-                <p className="text-center">${item.price}</p>
-                <p className="text-center">{item.quantity}</p>
-                <p className="text-center">
+                <p className="">{item.title}</p>
+                <p className="">${item.price}</p>
+                <p className="">{item.quantity}</p>
+                <p className="">
                   ${(item.price * item.quantity).toFixed(2)}
                 </p>
                 <p className="text-center">

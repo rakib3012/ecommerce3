@@ -3,9 +3,14 @@
 import { Menu, ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/reducer";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const cart = useSelector((state: RootState) => state.cart);
+
 
   return (
     <nav className="bg-cyan-700  text-white shadow-lg sticky top-0 z-50">
@@ -34,7 +39,10 @@ const Navbar = () => {
             className="relative hover:text-yellow-300 transition duration-300"
           >
             <span className="relative">
-             <ShoppingCart /><sup className="absolute -top-2 -right-1 bg-yellow-400 text-gray-800 text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">3</sup>
+             <ShoppingCart />
+             <sup className="absolute -top-2 -right-1 bg-yellow-400 text-gray-800 text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">
+              <span className="font-semibold">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
+             </sup>
             </span>
           </Link>
           <p>

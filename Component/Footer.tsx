@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
 
       {/* Bottom */}
       <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
-        © {new Date().getFullYear()} RakibShop. All rights reserved.
+        © 2025 RakibShop. All rights reserved.
       </div>
     </footer>
   );

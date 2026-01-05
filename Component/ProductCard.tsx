@@ -11,22 +11,23 @@ const ProductCard = ({ product }: { product: Product }) => {
     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-200 overflow-hidden">
       {/* IMAGE */}
       <div className="h-48 flex justify-center items-center bg-gray-100">
-        {product.image ? (
-          <Image
-            src={product.image} // 👉 dynamic image support
-            alt={product.name}
-            width={200}
-            height={200}
-          />
-        ) : (
-          <span className="text-gray-400">No Image</span>
+        {product.images?.map((img, i) =>
+          img ? (
+            <Image
+              key={i}
+              src={img}
+              width={200}
+              height={200}
+              alt={`${product.title}-${i}`}
+            />
+          ) : null
         )}
       </div>
 
       {/* CONTENT */}
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-2">
-          {product.name}
+          {product.title}
         </h3>
         <p className="text-cyan-600 font-bold text-lg">${product.price}</p>
       </div>
@@ -38,10 +39,9 @@ const ProductCard = ({ product }: { product: Product }) => {
             View
           </button>
         </Link>
-        <button
+         <button
           onClick={() => dispatch(addToCart(product))}
-          className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 transition"
-          
+          className="bg-cyan-200 text-white px-3 py-1 rounded hover:bg-cyan-700 transition"
         >
           Add to Cart
         </button>
