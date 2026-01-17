@@ -1,18 +1,26 @@
  
  
-import HomeComponent from "@/Component/Home";
+// import HomeComponent from "@/Component/Home";
 
 
  
 
-export default function Home() {
-  return (
-   <>
-    <div className="flex items-center justify-center  h-[calc(100vh-56px)] font-sans overflow-hidden">
+// export default function Home() {
+//   return (
+//    <>
+//     <div className="flex items-center justify-center  h-[calc(100vh-56px)] font-sans overflow-hidden">
 
-      <HomeComponent/>
+//       <HomeComponent/>
 
-    </div>
-    </>
-  );
+//     </div>
+//     </>
+//   );
+// }
+
+
+import { redirect } from "next/navigation";
+
+export default function Page() {
+  // Redirect root to dashboard (protected by middleware)
+  redirect("/home");
 }

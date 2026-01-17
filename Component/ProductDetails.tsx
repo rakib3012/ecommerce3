@@ -10,14 +10,16 @@ import Link from "next/link";
  
 
 const ProductDetails = () => {
-  const params = useParams();
-  const id = params?.id;
+ const params = useParams<{ id: string }>();
+const id = params.id;
+
+const { data, isLoading, isError, error } = useFetchDynamicProductData({ id });
   const dispatch = useDispatch();
 console.log("params id",id)
 // if (!id) return <div>Loading...</div>;
 
 
-  const { data, isLoading, isError, error } = useFetchDynamicProductData(id);
+  // const { data, isLoading, isError, error } = useFetchDynamicProductData({id});
 
   if (isLoading) {
     return (

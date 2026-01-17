@@ -8,6 +8,7 @@ const fetchData = async (id: string): Promise<Product> => {
     throw new Error(`Failed to fetch product (status: ${response.status})`);
   }
   const res = await response.json();
+  console.log("res>>>>>>>>>>>>>>>",res)
   return res;
 };
 
