@@ -9,10 +9,10 @@ export default function Layout({
 }) {
   return (
    <div className="min-h-screen flex flex-col">
-   <header>
+   <header className='sticky top-0 z-50'>
           <Navbar />
         </header>
-    <main className="flex">
+    <main className="flex overflow-y-auto">
       
       {/* Sidebar */}
       <div className="w-[18%] bg-gray-100 shadow-lg p-2 px-4">
