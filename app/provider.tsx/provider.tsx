@@ -1,6 +1,7 @@
 "use client";
 
 import { store } from "@/store/reducer";
+import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
@@ -10,6 +11,7 @@ const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
+      <HeroUIProvider>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         {children}
@@ -26,5 +28,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
         />
       </QueryClientProvider>
     </Provider>
+    </HeroUIProvider>
   );
 }

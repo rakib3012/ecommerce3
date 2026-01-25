@@ -7,6 +7,8 @@ import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, modifyQuantityAnItem } from "@/store/reducer/cartReducer";
+import type { CartItem } from "@/store/reducer/cartReducer";
+import type { Product } from "@/app/hook/fetchingProductData";
 import type { RootState } from "@/store/reducer";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -54,9 +56,37 @@ const ProductDetails = () => {
 
   const relatedProducts = Array.isArray(listData?.products)
     ? listData.products.filter(
-        (item) => item.category === data.category && item.id !== data.id,
+        (item: Product) =>
+          item.category === data.category && item.id !== data.id,
       )
     : [];
+
+  const addToCartHandler = () => {
+    const existingItem = cart.find((item: CartItem) => item.id === data.id);
+
+    if (existingItem) {
+      const newQuantity = existingItem.quantity + quantity;
+      dispatch(
+        modifyQuantityAnItem({
+          id: data.id,
+          quantity: newQuantity,
+        }),
+      );
+    } else {
+      // First add the product, then adjust quantity if needed
+      dispatch(addToCart(data));
+      if (quantity > 1) {
+        dispatch(
+          modifyQuantityAnItem({
+            id: data.id,
+            quantity,
+          }),
+        );
+      }
+    }
+
+    toast.success(`${quantity} × ${data.title} added to cart`);
+  };
 
   return (
     <div className="max-w-6xl mx-auto p-6 md:p-12 space-y-12">
@@ -133,42 +163,18 @@ const ProductDetails = () => {
 
           {/* BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Link href={"/cart"}>
-              <button
-                onClick={() => {
-                  const existingItem = cart.find((item) => item.id === data.id);
+            <button
+              onClick={addToCartHandler}
+              className="bg-cyan-600 text-white px-6 py-3 rounded-md hover:bg-cyan-700 transition font-semibold"
+            >
+              Add to Cart
+            </button>
 
-                  if (existingItem) {
-                    const newQuantity = existingItem.quantity + quantity;
-                    dispatch(
-                      modifyQuantityAnItem({
-                        id: data.id,
-                        quantity: newQuantity,
-                      }),
-                    );
-                  } else {
-                    // First add the product, then adjust quantity if needed
-                    dispatch(addToCart(data));
-                    if (quantity > 1) {
-                      dispatch(
-                        modifyQuantityAnItem({
-                          id: data.id,
-                          quantity,
-                        }),
-                      );
-                    }
-                  }
-
-                  toast.success(`${quantity} × ${data.title} added to cart`);
-                }}
-                className="bg-cyan-600 text-white px-6 py-3 rounded-md hover:bg-cyan-700 transition font-semibold"
-              >
-                Add to Cart
-              </button>
-            </Link>
             <button
               onClick={() => {
-                const existingItem = cart.find((item) => item.id === data.id);
+                const existingItem = cart.find(
+                  (item: CartItem) => item.id === data.id,
+                );
 
                 if (existingItem) {
                   const newQuantity = existingItem.quantity + quantity;
@@ -210,31 +216,34 @@ const ProductDetails = () => {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {relatedProducts.map((item) => (
+            {relatedProducts.map((item: Product) => (
               <div
                 key={item.id}
                 className="bg-white shadow-md rounded-lg p-4 flex flex-col"
               >
-                <div className="flex justify-center items-center bg-gray-100 rounded-md mb-4 h-40">
-                  <Image
-                    src={item.images?.[0] || "/images/placeholder.png"}
-                    alt={item.title}
-                    width={200}
-                    height={200}
-                    className="object-contain rounded-md"
-                  />
-                </div>
-
-                <h3 className="font-semibold mb-2 line-clamp-2">
-                  {item.title}
-                </h3>
-                <p className="text-cyan-600 font-bold mb-4">${item.price}</p>
-
                 <Link href={`/product_details/${item.id}`} className="mt-auto">
-                  <button className="w-full bg-cyan-500 text-white py-2 rounded-md hover:bg-cyan-600 transition text-sm font-semibold">
-                    View Details
-                  </button>
+                  <div className="flex justify-center items-center bg-gray-100 rounded-md mb-4 h-40">
+                    <Image
+                      src={item.images?.[0] || "/images/placeholder.png"}
+                      alt={item.title}
+                      width={200}
+                      height={200}
+                      className="object-contain rounded-md"
+                    />
+                  </div>
+
+                  <h3 className="font-semibold mb-2 line-clamp-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-cyan-600 font-bold mb-4">${item.price}</p>
                 </Link>
+
+                <button
+                  onClick={addToCartHandler}
+                  className="w-full bg-cyan-500 text-white py-2 rounded-md hover:bg-cyan-600 transition text-sm font-semibold"
+                >
+                  Add to Cart
+                </button>
               </div>
             ))}
           </div>

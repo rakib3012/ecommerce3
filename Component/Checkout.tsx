@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/store/reducer";
 import { clearCart } from "@/store/reducer/cartReducer";
+import type { CartItem } from "@/store/reducer/cartReducer";
 const Checkout = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
@@ -15,7 +16,7 @@ const Checkout = () => {
   const [address, setAddress] = useState("");
 
   const subtotal = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc: number, item: CartItem) => acc + item.price * item.quantity,
     0,
   );
   const shipping = cart.length > 0 ? 20 : 0;
@@ -78,7 +79,7 @@ const Checkout = () => {
 
           <div className="space-y-4">
             {cart.length > 0 ? (
-              cart.map((item) => (
+              cart.map((item: CartItem) => (
                 <div
                   key={item.id}
                   className="flex justify-between text-sm text-gray-700"
