@@ -1,5 +1,5 @@
 "use client";
-import { Product } from "@/app/hook/fetchingProductData";
+import { Product } from "@/lib/hook/fetchingProductData";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
@@ -72,15 +72,12 @@ const ProductCard = ({ product }: { product: Product }) => {
         <button
           onClick={() => {
             dispatch(addToCart(product));
-            toast.success(`${product.title} added to cart`, {
-             
-            });
+            toast.success(`${product.title} added to cart`, {});
           }}
           className="cursor-pointer flex-1 inline-flex items-center justify-center rounded-full bg-emerald-500 text-white text-sm font-semibold px-3 py-2 shadow-sm hover:bg-emerald-600 hover:shadow-md transition-colors duration-200"
         >
           Add to Cart
         </button>
-       
       </div>
     </div>
   );

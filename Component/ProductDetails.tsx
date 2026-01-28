@@ -1,14 +1,14 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { useFetchDynamicProductData } from "@/app/hook/fetchDynamicProduct";
-import { useFetchingProductData } from "@/app/hook/fetchingProductData";
+import { useFetchDynamicProductData } from "@/lib/hook/fetchDynamicProduct";
+import { useFetchingProductData } from "@/lib/hook/fetchingProductData";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, modifyQuantityAnItem } from "@/store/reducer/cartReducer";
 import type { CartItem } from "@/store/reducer/cartReducer";
-import type { Product } from "@/app/hook/fetchingProductData";
+import type { Product } from "@/lib/hook/fetchingProductData";
 import type { RootState } from "@/store/reducer";
 import Link from "next/link";
 import { toast } from "react-toastify";

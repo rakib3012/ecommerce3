@@ -1,7 +1,9 @@
 "use client";
 
+import { useFetchLogin } from "@/lib/hook/fetchLogin";
+import { form } from "@heroui/react";
 import React, { useState, FormEvent } from "react";
-
+import { useRouter } from "next/navigation";
 type LoginFormState = {
   email: string;
   password: string;
@@ -20,7 +22,7 @@ const Login: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // input change handler
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +53,9 @@ const Login: React.FC = () => {
     return newErrors;
   };
 
+  const route = useRouter();
+
+  const {mutate,isError,isPending} = useFetchLogin();
   // submit handler
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -62,23 +67,26 @@ const Login: React.FC = () => {
     }
 
     setErrors({});
-    setIsLoading(true);
+  // setIsLoading(true);
 
-    try {
-      // 🔐 API call example
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+     mutate(formData, {
+    onSuccess: (data) => {
+      console.log("first",data)
+      // localStorage.setItem("access_token", data.access_token);
+      // localStorage.setItem("refresh_token", data.refresh_token);
+      document.cookie = `access_token=${data.access_token}; path=/; max-age=3600`; 
 
-      console.log("Login Success:", formData);
+       route.push("/home");
+    },
+    onError: (error) => {
+      console.error("Login error:", error);
+    },
 
-      // redirect / token handling here
-    } catch (error) {
-      setErrors({
-        general: "Something went wrong. Please try again.",
-      });
-      console.log("error....>>",error)
-    } finally {
-      setIsLoading(false);
-    }
+    
+  });
+      
+       
+    
   };
 
   return (
@@ -142,10 +150,10 @@ const Login: React.FC = () => {
           {/* Submit */}
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isPending}
             className="w-full rounded-lg bg-blue-600 py-2 text-white font-medium hover:bg-blue-700 transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {isLoading ? "Logging in..." : "Login"}
+            {isPending ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>

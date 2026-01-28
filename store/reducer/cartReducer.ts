@@ -1,4 +1,4 @@
-import { Product } from "@/app/hook/fetchingProductData";
+import { Product } from "@/lib/hook/fetchingProductData";
 import { createAction, createReducer, PayloadAction } from "@reduxjs/toolkit";
 
 // Product API Response Type
@@ -40,9 +40,10 @@ const initialState: CartItem[] = [];
 
 export const addToCart = createAction<Product>("cart/addToCart");
 export const removeProduct = createAction<number>("cart/removeProduct");
-export const modifyQuantityAnItem = createAction<{ id: number; quantity: number }>(
-  "cart/modifyQuantityAnItem"
-);
+export const modifyQuantityAnItem = createAction<{
+  id: number;
+  quantity: number;
+}>("cart/modifyQuantityAnItem");
 export const clearCart = createAction("cart/clearCart");
 
 export const cartReducer = createReducer(initialState, (builder) => {
@@ -67,7 +68,7 @@ export const cartReducer = createReducer(initialState, (builder) => {
         if (index !== -1) {
           state[index].quantity = action.payload.quantity;
         }
-      }
+      },
     )
 
     .addCase(clearCart, () => {
