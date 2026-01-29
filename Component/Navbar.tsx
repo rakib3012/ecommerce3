@@ -1,16 +1,23 @@
 "use client";
 
-import { Menu, ShoppingCart, X } from "lucide-react";
+import { Menu, MoonIcon, ShoppingCart, SunIcon, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/reducer";
+import { Switch } from "@heroui/react";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  useEffect(() => setMounted(true), []);
 
   const cart = useSelector((state: RootState) => state.cart);
-
+  const onThemeToggle = (isSelected: boolean) => {
+    setTheme(isSelected ? "dark" : "light");
+  };
 
   return (
     <nav className="bg-cyan-700  text-white shadow-lg sticky top-0 z-50">
@@ -25,9 +32,11 @@ const Navbar = () => {
 
         {/* 🧭 Desktop Menu */}
         <ul className="hidden md:flex gap-16 text-lg font-medium">
-          {["home", "shop", "contact",].map((item) => (
+          {["home", "shop", "contact"].map((item) => (
             <li key={item}>
-              <Link href={`/${item}`}>{item.charAt(0).toUpperCase()+item.slice(1)}</Link>
+              <Link href={`/${item}`}>
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
             </li>
           ))}
         </ul>
@@ -39,10 +48,12 @@ const Navbar = () => {
             className="relative hover:text-yellow-300 transition duration-300"
           >
             <span className="relative">
-             <ShoppingCart />
-             <sup className="absolute -top-2 -right-1 bg-yellow-400 text-gray-800 text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">
-              <span className="font-semibold">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
-             </sup>
+              <ShoppingCart />
+              <sup className="absolute -top-2 -right-1 bg-yellow-400 text-gray-800 text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="font-semibold">
+                  {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                </span>
+              </sup>
             </span>
           </Link>
           <p>
@@ -50,11 +61,29 @@ const Navbar = () => {
               href="/login"
               className="relative hover:text-yellow-300 transition duration-300"
             >
-              <span className="">
-                Login
-              </span>
+              <span className="">Login</span>
             </Link>
           </p>
+
+          <div>
+            {mounted ? (
+              <Switch
+                isSelected={theme === "dark"}
+                onValueChange={onThemeToggle}
+                color="secondary"
+                size="sm"
+                thumbIcon={({ isSelected, className }) =>
+                  isSelected ? (
+                    <SunIcon className={className} />
+                  ) : (
+                    <MoonIcon className={className} />
+                  )
+                }
+              >
+                {theme === "dark" ? "Dark mode" : "Light mode"}
+              </Switch>
+            ) : null}
+          </div>
 
           {/* 📱 Mobile Menu Button */}
           <button
@@ -69,7 +98,7 @@ const Navbar = () => {
       {/* 📱 Mobile Dropdown Menu */}
       {menuOpen && (
         <ul className="md:hidden bg-emerald-700 text-center space-y-3 py-4 animate-fadeIn">
-          {["home", "shop", "contact",].map((item) => (
+          {["home", "shop", "contact"].map((item) => (
             <li key={item}>
               <Link href={`/${item}`} onClick={() => setMenuOpen(false)}>
                 {item}

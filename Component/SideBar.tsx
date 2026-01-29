@@ -1,26 +1,75 @@
-import React from 'react'
 
- 
+
+"use client";
+
+import { Accordion, AccordionItem, Checkbox, Slider } from "@heroui/react";
+import React from "react";
 
 const SideBar = () => {
+  const filters = [
+  { id: "price", label: "Select Price Range" },
+  { id: "brand", label: "Select Brand" },
+  
+];
+
   return (
     <div>
-         <div className="w-full p-4 ">
-          <h2 className="text-lg font-semibold mb-4">Filters</h2>
+      <div className="  w-full h-screen p-4 ">
+        <h2 className="text-lg font-semibold mb-4">Filters</h2>
 
-          <ul className="space-y-2">
-            {["Price Range", "Brand", "Color"].map((item) => (
-              <li
-                key={item}
-                className="cursor-pointer px-3 py-2 rounded-md hover:bg-gray-200 transition"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <Accordion >
+       
+      <AccordionItem
+        key={1}
+        aria-label="Select Price Range"
+        
+        title="Select Price Range"
+      >
+     <Slider
+      className="max-w-md"
+      defaultValue={[100, 500]}
+      formatOptions={{style: "currency", currency: "USD"}}
+      label="Price Range"
+      maxValue={1000}
+      minValue={0}
+      step={50}
+    />
+
+      </AccordionItem>
+
+      <AccordionItem
+        key={2}
+        aria-label="Select Brand"
+        
+        title="Select Brand"
+      >
+       <div className="flex flex-col gap-4">
+      <Checkbox defaultSelected color="default">
+        Default
+      </Checkbox>
+      <Checkbox defaultSelected color="primary">
+        Primary
+      </Checkbox>
+      <Checkbox defaultSelected color="secondary">
+        Secondary
+      </Checkbox>
+      <Checkbox defaultSelected color="success">
+        Success
+      </Checkbox>
+      <Checkbox defaultSelected color="warning">
+        Warning
+      </Checkbox>
+      <Checkbox defaultSelected color="danger">
+        Danger
+      </Checkbox>
     </div>
-  )
-}
+      </AccordionItem>
+      
+        
+    </Accordion>
+      </div>
+    </div>
+  );
+};
 
-export default SideBar
+export default SideBar;

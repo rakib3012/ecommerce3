@@ -2,12 +2,12 @@
 
 import Product from "../../Component/Product";
 
-const shopPage = () => {
+const Page = () => {
   return (
-    <div className="px-10">
+    <div className="bg-white dark:bg-slate-900  px-10">
       <Product />
     </div>
   );
 };
 
-export default shopPage;
+export default Page;

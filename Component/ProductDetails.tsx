@@ -61,38 +61,45 @@ const ProductDetails = () => {
       )
     : [];
 
-  const addToCartHandler = () => {
-    const existingItem = cart.find((item: CartItem) => item.id === data.id);
+  const addProductWithQuantity = (product: Product, qty: number) => {
+    const existingItem = cart.find((item: CartItem) => item.id === product.id);
 
     if (existingItem) {
-      const newQuantity = existingItem.quantity + quantity;
+      const newQuantity = existingItem.quantity + qty;
       dispatch(
         modifyQuantityAnItem({
-          id: data.id,
+          id: product.id,
           quantity: newQuantity,
         }),
       );
     } else {
-      // First add the product, then adjust quantity if needed
-      dispatch(addToCart(data));
-      if (quantity > 1) {
+      dispatch(addToCart(product));
+      if (qty > 1) {
         dispatch(
           modifyQuantityAnItem({
-            id: data.id,
-            quantity,
+            id: product.id,
+            quantity: qty,
           }),
         );
       }
     }
 
-    toast.success(`${quantity} × ${data.title} added to cart`);
+    toast.success(`${qty} × ${product.title} added to cart`);
   };
+
+  const addToCartHandler = () => addProductWithQuantity(data, quantity);
 
   return (
     <div className="max-w-6xl mx-auto p-6 md:p-12 space-y-12">
-      <div className="grid md:grid-cols-2 gap-8 bg-white shadow-lg rounded-lg">
+      <div
+        className="grid md:grid-cols-2 gap-8 rounded-lg shadow-lg
+        bg-white dark:bg-slate-800"
+      >
         {/* IMAGE */}
-        <div className="flex justify-center items-center bg-gray-100 rounded-lg p-4">
+        <div
+          className="flex justify-center items-center rounded-lg p-4
+          bg-gray-100 dark:bg-slate-700"
+        >
           <Image
             src={imageSrc}
             alt={data.title}
@@ -105,41 +112,50 @@ const ProductDetails = () => {
         {/* DETAILS */}
         <div className="flex flex-col justify-between p-4">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-slate-100">
               {data.title}
             </h1>
-            <p className="text-cyan-600 font-bold text-2xl mb-2">
+            <p className="font-bold text-2xl mb-2 text-cyan-600 dark:text-cyan-400">
               ${data.price}
             </p>
             {data.rating && (
-              <p className="text-yellow-500 mb-2">
+              <p className="mb-2 text-yellow-500 dark:text-yellow-400">
                 ⭐⭐⭐ {data.rating.toFixed(1)}
               </p>
             )}
-            <p className="text-gray-700 mb-4">{data.description}</p>
-            <p className="text-gray-600 mb-1">
+            <p className="mb-4 text-gray-700 dark:text-slate-300">
+              {data.description}
+            </p>
+            <p className="mb-1 text-gray-600 dark:text-slate-400">
               Stock: <span className="font-semibold">{data.stock}</span>
             </p>
-            <p className="text-gray-600 mb-1">
+            <p className="mb-1 text-gray-600 dark:text-slate-400">
               Brand: <span className="font-semibold">{data.brand}</span>
             </p>
-            <p className="text-gray-600 mb-6">
+            <p className="mb-6 text-gray-600 dark:text-slate-400">
               Category: <span className="font-semibold">{data.category}</span>
             </p>
 
             {/* Quantity selector */}
             <div className="mt-4 flex items-center gap-4">
-              <span className="text-gray-700 font-medium">Quantity:</span>
-              <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1">
+              <span className="font-medium text-gray-700 dark:text-slate-300">
+                Quantity:
+              </span>
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1
+                bg-gray-100 dark:bg-slate-700"
+              >
                 <button
                   type="button"
                   aria-label="Decrease quantity"
                   onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                  className="h-7 w-7 flex items-center justify-center rounded-full bg-white text-slate-700 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300 text-xs"
+                  className="h-7 w-7 flex items-center justify-center rounded-full text-xs
+                    bg-white text-slate-700 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300
+                    dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-cyan-400"
                 >
                   -
                 </button>
-                <span className="font-semibold text-slate-800 min-w-7 text-center">
+                <span className="font-semibold min-w-7 text-center text-slate-800 dark:text-slate-200">
                   {quantity}
                 </span>
                 <button
@@ -150,12 +166,14 @@ const ProductDetails = () => {
                       data.stock ? Math.min(data.stock, prev + 1) : prev + 1,
                     )
                   }
-                  className="h-7 w-7 flex items-center justify-center rounded-full bg-white text-slate-700 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300 text-xs"
+                  className="h-7 w-7 flex items-center justify-center rounded-full text-xs
+                    bg-white text-slate-700 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300
+                    dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-cyan-400"
                 >
                   +
                 </button>
               </div>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-500 dark:text-slate-400">
                 Available: <span className="font-semibold">{data.stock}</span>
               </p>
             </div>
@@ -165,7 +183,10 @@ const ProductDetails = () => {
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <button
               onClick={addToCartHandler}
-              className="bg-cyan-600 text-white px-6 py-3 rounded-md hover:bg-cyan-700 transition font-semibold"
+              className="px-6 py-3 rounded-md transition font-semibold text-white
+                bg-cyan-600 hover:bg-cyan-700
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/40
+                dark:bg-cyan-500 dark:hover:bg-cyan-400"
             >
               Add to Cart
             </button>
@@ -201,7 +222,9 @@ const ProductDetails = () => {
                 );
                 router.push("/checkout");
               }}
-              className="border border-gray-300 px-6 py-3 rounded-md hover:bg-gray-100 transition font-semibold"
+              className="px-6 py-3 rounded-md transition font-semibold border
+                border-gray-300 hover:bg-gray-100
+                dark:text-slate-200 dark:border-slate-600 dark:hover:bg-slate-700"
             >
               Buy Now
             </button>
@@ -219,10 +242,14 @@ const ProductDetails = () => {
             {relatedProducts.map((item: Product) => (
               <div
                 key={item.id}
-                className="bg-white shadow-md rounded-lg p-4 flex flex-col"
+                className="rounded-lg p-4 flex flex-col shadow-md
+                  bg-white dark:bg-slate-800"
               >
                 <Link href={`/product_details/${item.id}`} className="mt-auto">
-                  <div className="flex justify-center items-center bg-gray-100 rounded-md mb-4 h-40">
+                  <div
+                    className="flex justify-center items-center rounded-md mb-4 h-40
+                    bg-gray-100 dark:bg-slate-700"
+                  >
                     <Image
                       src={item.images?.[0] || "/images/placeholder.png"}
                       alt={item.title}
@@ -232,15 +259,20 @@ const ProductDetails = () => {
                     />
                   </div>
 
-                  <h3 className="font-semibold mb-2 line-clamp-2">
+                  <h3 className="font-semibold mb-2 line-clamp-2 text-slate-900 dark:text-slate-100">
                     {item.title}
                   </h3>
-                  <p className="text-cyan-600 font-bold mb-4">${item.price}</p>
+                  <p className="font-bold mb-4 text-cyan-600 dark:text-cyan-400">
+                    ${item.price}
+                  </p>
                 </Link>
 
                 <button
-                  onClick={addToCartHandler}
-                  className="w-full bg-cyan-500 text-white py-2 rounded-md hover:bg-cyan-600 transition text-sm font-semibold"
+                  onClick={() => addProductWithQuantity(item, 1)}
+                  className="w-full py-2 rounded-md transition text-sm font-semibold text-white
+                    bg-cyan-500 hover:bg-cyan-600
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/40
+                    dark:bg-cyan-500 dark:hover:bg-cyan-400"
                 >
                   Add to Cart
                 </button>

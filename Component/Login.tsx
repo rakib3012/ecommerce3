@@ -76,7 +76,7 @@ const Login: React.FC = () => {
       // localStorage.setItem("refresh_token", data.refresh_token);
       document.cookie = `access_token=${data.access_token}; path=/; max-age=3600`; 
 
-       route.push("/home");
+       route.push("/admin");
     },
     onError: (error) => {
       console.error("Login error:", error);
