@@ -15,7 +15,7 @@ export interface FormData {
 
 const fetchLogin = async (formData: FormData) => {
 
-    const url = `https://api.escuelajs.co/api/v1/auth/login`
+    const url = `http://localhost:8000/api/auth/signin`
     try{
  const response = await fetch(url, {
         method: 'POST',

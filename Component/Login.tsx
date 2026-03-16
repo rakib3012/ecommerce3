@@ -55,7 +55,7 @@ const Login: React.FC = () => {
 
   const route = useRouter();
 
-  const {mutate,isError,isPending} = useFetchLogin();
+  const {mutate,isSuccess,isPending} = useFetchLogin();
   // submit handler
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -75,6 +75,7 @@ const Login: React.FC = () => {
       // localStorage.setItem("access_token", data.access_token);
       // localStorage.setItem("refresh_token", data.refresh_token);
       document.cookie = `access_token=${data.access_token}; path=/; max-age=3600`; 
+      document.cookie = `refresh_token=${data.refresh_token}; path=/; max-age=3600`;
 
        route.push("/admin");
     },

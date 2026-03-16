@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/reducer";
-import { Switch } from "@heroui/react";
+import { Avatar, Button, Drawer, DrawerContent, DrawerFooter, DrawerHeader, Switch, useDisclosure } from "@heroui/react";
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
@@ -18,6 +18,14 @@ const Navbar = () => {
   const onThemeToggle = (isSelected: boolean) => {
     setTheme(isSelected ? "dark" : "light");
   };
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+   const [placement, setPlacement] = useState("left");
+
+  const handleOpen = ( ) => {
+     
+    onOpen();
+  };
+ 
 
   return (
     <nav className="bg-cyan-700  text-white shadow-lg sticky top-0 z-50">
@@ -84,6 +92,18 @@ const Navbar = () => {
               </Switch>
             ) : null}
           </div>
+
+          <div className="flex gap-4 items-center">
+            <Avatar
+            size="sm"
+            onClick={() => handleOpen()}
+              isBordered
+              color="default"
+              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            />
+          </div>
+
+
 
           {/* 📱 Mobile Menu Button */}
           <button
